@@ -115,6 +115,7 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void deleteInvoice() {
+        
     }
 
     private void addItem() {
@@ -189,6 +190,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                     frame.getInvoices().add(inv);
                 }
                 System.out.println("Check point");
+                
                 for (String lineLine : lineLines) {
                     
                     // lineLine = "1,mobile,5000,2"
@@ -220,6 +222,7 @@ public class Controller implements ActionListener, ListSelectionListener {
     private void invoiceCreationDone() {
         String dateStr = invoice_dialog.getInvoiceDateField().getText();
         String name = invoice_dialog.getCustomerNameField().getText();
+        
         invoice_dialog.setVisible(false);
         invoice_dialog.dispose();
         invoice_dialog = null;
@@ -241,6 +244,14 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     private void lineCreationDone() {
+        String item_name = line_dialog.getItemNameField().getText();
+        String item_count = line_dialog.getItemCountField().getText();
+        String item_price = line_dialog.getItemPriceField().getText();
+        
+        line_dialog.setVisible(false);
+        line_dialog.dispose();
+        line_dialog = null;
+        
         
     }
 
@@ -252,96 +263,3 @@ public class Controller implements ActionListener, ListSelectionListener {
    
 }
 
-/*
-
-                
-                for (String lineLine : lineLines) {
-                    // 
-                    
-                    String[] parts = lineLine.split(",");
-                    
-                    //
-                     
-                    int num = Integer.parseInt(parts[0]);
-                    String name = parts[1];
-                    double price = Double.parseDouble(parts[2]);
-                    int count = Integer.parseInt(parts[3]);
-                    
-                    InvoiceHeader inv = frame.getInvoiceByNum(num);
-                    InvoiceLine line = new InvoiceLine(name, price, count, inv);
-                    inv.getLines().add(line);
-                }
-                System.out.println("Check point");
-                
-                frame.setHeader_Table_Model(new Invoice_Header_Table_Model(frame.getInvoices()));
-                frame.getInvoiceItemsTable().setModel(frame.getHeader_Table_Model());
-            } 
-                catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    private void deleteItem() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void addItem() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        
-        line_dialog = new Line_Dialog(frame);
-        line_dialog.setVisible(true);
-        
-    }
-   
-    private void deleteInvoice() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void createInvoice() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        
-        invoice_dialog = new Invoice_Dialog(frame);
-        invoice_dialog.setVisible(true);
-        
-    }
-
-    
-    private void invoiceCreationDone() {
-        String dateStr = invoice_dialog.getInvoiceDateField().getText();
-        String name = invoice_dialog.getCustomerNameField().getText();
-        invoice_dialog.setVisible(false);
-        invoice_dialog.dispose();
-        invoice_dialog = null;
-        try {
-            Date date = salesInvoiceGeneratorFrame.sdf.parse(dateStr);
-            int num = frame.getNextInvoiceNumber();
-            InvoiceHeader header = new InvoiceHeader(num, date, name);
-            frame.getInvoices().add(header);
-            frame.getHeader_Table_Model().fireTableDataChanged();
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(frame, "Error in Date format", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void invoiceCreationCancel() {
-        invoice_dialog.setVisible(false);
-        invoice_dialog.dispose();
-        invoice_dialog = null;
-    }
-    
-    
-    private void lineCreationDone() {
-        
-    }
-
-    private void lineCreationCancel() {
-        line_dialog.setVisible(false);
-        line_dialog.dispose();
-        line_dialog = null;
-    }
-*/
