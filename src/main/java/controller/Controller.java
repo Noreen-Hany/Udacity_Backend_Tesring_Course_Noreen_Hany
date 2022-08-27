@@ -146,6 +146,9 @@ public class Controller implements ActionListener, ListSelectionListener {
 
         if (header_File != null && line_File != null) {
             try {
+                
+                // collection streams
+                List<String> headerLines = Files.lines(Paths.get(header_File.getAbsolutePath())).collect(Collectors.toList());
                 /*
                 1,8/7/2020,Adam
                 2,5/6/2022,Ilyas
@@ -155,8 +158,8 @@ public class Controller implements ActionListener, ListSelectionListener {
                 6,3/7/2022,Yusuf
                 7,6/7/2022,Yunis  */
                 
-                // collection streams
-                List<String> headerLines = Files.lines(Paths.get(header_File.getAbsolutePath())).collect(Collectors.toList());
+                
+                List<String> lineLines = Files.lines(Paths.get(line_File.getAbsolutePath())).collect(Collectors.toList());                
                 /*
                 1,mobile,5000,2
                 1,airpods,2400,5
@@ -168,7 +171,6 @@ public class Controller implements ActionListener, ListSelectionListener {
                 3,Smart Watch,3500,1
                 7,Charger,500,4        */
                 
-                List<String> lineLines = Files.lines(Paths.get(line_File.getAbsolutePath())).collect(Collectors.toList());
                 
                 //ArrayList<Invoice> invoices = new ArrayList<>();
                 frame.getInvoices().clear();
@@ -189,7 +191,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                     //invoices.add(inv);
                     frame.getInvoices().add(inv);
                 }
-                System.out.println("Check point");
+                System.out.println("Invoices headers Added");
                 
                 for (String lineLine : lineLines) {
                     
@@ -207,7 +209,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                     InvoiceLine line = new InvoiceLine(name, price, count, inv);
                     inv.getLines().add(line);
                 }
-                System.out.println("Check point");
+                System.out.println("Invoices lines added");
                 frame.setHeader_Table_Model(new Invoice_Header_Table_Model(frame.getInvoices()));
                 frame.getInvoicetable().setModel(frame.getHeader_Table_Model());
             } catch (Exception ex) {

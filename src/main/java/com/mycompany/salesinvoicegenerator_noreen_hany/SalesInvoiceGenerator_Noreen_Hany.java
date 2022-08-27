@@ -15,7 +15,7 @@ import controller.Controller;
 public class SalesInvoiceGenerator_Noreen_Hany {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+      
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
