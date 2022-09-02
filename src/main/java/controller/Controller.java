@@ -264,7 +264,6 @@ public class Controller implements ActionListener, ListSelectionListener {
                 frame.setHeader_Table_Model(new Invoice_Header_Table_Model(frame.getInvoices()));
                 frame.getInvoicetable().setModel(frame.getHeader_Table_Model());
             } catch (Exception ex) {
-                ex.printStackTrace();
             }
         }
     }
