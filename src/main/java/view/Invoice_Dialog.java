@@ -23,8 +23,10 @@ public class Invoice_Dialog extends JDialog {
     
     private JTextField customerNameField;
     private JTextField invoiceDateField;
+    
     private JLabel customerNameLabel;
     private JLabel invoiceDateLabel;
+    
     private JButton DoneBtn;
     private JButton CancelBtn;
 
@@ -45,7 +47,7 @@ public class Invoice_Dialog extends JDialog {
         
         DoneBtn.addActionListener(frame.getController());
         CancelBtn.addActionListener(frame.getController());
-        setLayout(new GridLayout(4, 2));
+        setLayout(new GridLayout(3, 2));
         
         add(invoiceDateLabel);
         add(invoiceDateField);

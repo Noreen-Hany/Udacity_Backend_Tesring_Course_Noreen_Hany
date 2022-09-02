@@ -21,6 +21,10 @@ public class Invoice_Line_Table_Model extends AbstractTableModel {
     public Invoice_Line_Table_Model(ArrayList<InvoiceLine> lines) {
         this.lines = lines;
     }
+
+    public Invoice_Line_Table_Model() {
+        
+    }
     
    @Override
     public int getRowCount() {

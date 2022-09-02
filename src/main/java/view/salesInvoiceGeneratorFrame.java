@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import model.InvoiceHeader;
 import model.Invoice_Header_Table_Model;
+import model.Invoice_Line_Table_Model;
 
 
 
@@ -77,6 +78,8 @@ public class salesInvoiceGeneratorFrame extends javax.swing.JFrame {
     public static DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
     private Invoice_Header_Table_Model header_Table_Model;
+    
+    private Invoice_Line_Table_Model line_Table_Model;
     
 
     /**
@@ -155,6 +158,11 @@ public class salesInvoiceGeneratorFrame extends javax.swing.JFrame {
 
         deleteitembtn.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         deleteitembtn.setText("Delete Item");
+        deleteitembtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteitembtnActionPerformed(evt);
+            }
+        });
 
         InvoiceDateLabel7.setText("Invoice Date");
 
@@ -274,6 +282,11 @@ public class salesInvoiceGeneratorFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addFileCheckBoxMenuItem4ActionPerformed
 
+    private void deleteitembtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteitembtnActionPerformed
+        // TODO add your handling code here:
+           
+    }//GEN-LAST:event_deleteitembtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -333,9 +346,21 @@ public class salesInvoiceGeneratorFrame extends javax.swing.JFrame {
     public void setHeader_Table_Model(Invoice_Header_Table_Model header_Table_Model) {
         this.header_Table_Model = header_Table_Model;
     }
+    
+    public Invoice_Line_Table_Model getLine_Table_Model() {
+        return line_Table_Model;
+    }
+
+    public void setLine_Table_Model(Invoice_Line_Table_Model line_Table_Model) {
+        this.line_Table_Model = line_Table_Model;
+    }
 
     public JTable getInvoiceItemsTable() {
         return invoiceItemsTable;
+    }
+    
+     public void setInvoiceItemsTable(Invoice_Line_Table_Model line_Table_Model) {
+        
     }
 
     public JTable getInvoicetable() {
@@ -365,6 +390,12 @@ public class salesInvoiceGeneratorFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JCheckBoxMenuItem saveDataCheckBoxMenuItem5;
     // End of variables declaration//GEN-END:variables
+
+    
+
+   
+
+   
 
     
     

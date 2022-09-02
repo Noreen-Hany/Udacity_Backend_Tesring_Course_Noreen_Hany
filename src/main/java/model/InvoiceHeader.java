@@ -11,6 +11,7 @@ package model;
 
 import java.util.Date;
 import java.util.ArrayList;
+import view.salesInvoiceGeneratorFrame;
 
 
 public class InvoiceHeader {
@@ -73,6 +74,10 @@ public class InvoiceHeader {
      public String toString(){
          return "InvoiceHeader{" + "number=" + number + 
                 ", date=" + date + ", name=" + name + '}';
+     }
+     
+     public String getAsCSV(){
+         return number + "," + salesInvoiceGeneratorFrame.sdf.format(date) + "," + name;
      }
     
 }

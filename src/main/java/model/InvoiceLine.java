@@ -65,4 +65,8 @@ public class InvoiceLine {
                 ", price=" + price + ", count=" + count + '}';
     }
     
+    public String getAsCSV(){
+         return getHeader().getName() + "," + name + "," + price + "," + count;
+     }
+    
 }

@@ -32,13 +32,13 @@ public class Line_Dialog extends JDialog {
     
     public Line_Dialog(salesInvoiceGeneratorFrame frame) {
         super(frame);
-        itemNameField = new JTextField(35);
+        itemNameField = new JTextField(25);
         itemNameLbl = new JLabel("Item Name:");
         
-        itemPriceField = new JTextField(35);
+        itemPriceField = new JTextField(25);
         itemPriceLbl = new JLabel("Item Price:");
         
-        itemCountField = new JTextField(35);
+        itemCountField = new JTextField(25);
         itemCountLbl = new JLabel("Item Count:");
         
         DoneBtn = new JButton("Done");
@@ -50,7 +50,7 @@ public class Line_Dialog extends JDialog {
         DoneBtn.addActionListener(frame.getController());
         CancelBtn.addActionListener(frame.getController());
         
-        setLayout(new GridLayout(10,5));
+        setLayout(new GridLayout(4,2));
         
         add(itemNameLbl);
         add(itemNameField);
