@@ -178,8 +178,10 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
 
     public void addFile(String headrPath, String linePath) {
-        File header_File = null;
-        File line_File = null;
+        
+            File header_File = null;
+            File line_File = null;
+            
         if (headrPath == null && linePath == null) {
             JFileChooser fc = new JFileChooser();
             int result = fc.showOpenDialog(frame);
@@ -197,9 +199,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 
         if (header_File != null && line_File != null) {
             try {
-                
-                // collection streams
-                List<String> headerLines = Files.lines(Paths.get(header_File.getAbsolutePath())).collect(Collectors.toList());
                 /*
                 1,8/7/2020,Adam
                 2,5/6/2022,Ilyas
@@ -208,9 +207,9 @@ public class Controller implements ActionListener, ListSelectionListener {
                 5,1/8/2022,Moaway
                 6,3/7/2022,Yusuf
                 7,6/7/2022,Yunis  */
+                // collection streams
+                List<String> headerLines = Files.lines(Paths.get(header_File.getAbsolutePath())).collect(Collectors.toList());
                 
-                
-                List<String> lineLines = Files.lines(Paths.get(line_File.getAbsolutePath())).collect(Collectors.toList());                
                 /*
                 1,mobile,5000,2
                 1,airpods,2400,5
@@ -221,49 +220,49 @@ public class Controller implements ActionListener, ListSelectionListener {
                 5,PSC,8000,1
                 3,Smart Watch,3500,1
                 7,Charger,500,4        */
-                
+                List<String> lineLines = Files.lines(Paths.get(line_File.getAbsolutePath())).collect(Collectors.toList());
                 
                 //ArrayList<Invoice> invoices = new ArrayList<>();
                 frame.getInvoices().clear();
                 for (String headerLine : headerLines) {
-                    
-                    String[] parts = headerLine.split(",");  
-                    // "1,8/7/2020,Adam"  ==>  ["1", "08/07/2020", "Adam"]
+                    String[] parts = headerLine.split(",");  // "1,8/7/2020,Adam"  ==>  ["1", "08/07/2020", "Adam"]
                     
                     String numString = parts[0];
                     String dateString = parts[1];
                     String name = parts[2];
-                    
+                                
                     int num = Integer.parseInt(numString);
                     Date date = frame.sdf.parse(dateString);
                     
                     InvoiceHeader inv = new InvoiceHeader(num, date, name);
-                    
                     //invoices.add(inv);
                     frame.getInvoices().add(inv);
+                    
                 }
                 System.out.println("Invoices headers Added");
-                
                 for (String lineLine : lineLines) {
-                    
                     // lineLine = "1,mobile,5000,2"
-                    
                     String[] parts = lineLine.split(",");
-                    // parts = ["1", "mobile", "5000", "2"]
-                     
+                    /*
+                    parts = ["1", "mobile", "5000", "2"]
+                     */
                     
                     int num = Integer.parseInt(parts[0]);
                     String name = parts[1];
                     double price = Double.parseDouble(parts[2]);
                     int count = Integer.parseInt(parts[3]);
+                    
                     InvoiceHeader inv = frame.getInvoiceByNumber(num);
                     InvoiceLine line = new InvoiceLine(name, price, count, inv);
                     inv.getLines().add(line);
+                    
                 }
                 System.out.println("Invoices lines added");
                 frame.setHeader_Table_Model(new Invoice_Header_Table_Model(frame.getInvoices()));
                 frame.getInvoicetable().setModel(frame.getHeader_Table_Model());
+                                
             } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
